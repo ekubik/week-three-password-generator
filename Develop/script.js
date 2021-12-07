@@ -63,7 +63,7 @@ var includeLowerCaseAbc;
 var includeUpperCaseAbc;
 var includeSpecialChar;
 var selectCharacterType;
-var options;
+var options = [];
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -77,6 +77,8 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+var passwordLength;
 
 function generatePassword() {
   var passwordLength = prompt(
@@ -100,118 +102,120 @@ function generatePassword() {
     var includeSpecialChar = confirm(
       "Would you like to include special characters (such as ! % & etc.) ? "
     );
-    // define options variable for each user choice
-    {
-      if (
-        !includeNumbers &&
-        !includeLowerCaseAbc &&
-        !includeUpperCaseAbc &&
-        !includeSpecialChar
-      ) {
-        var selectCharacterType = confirm(
-          "You must select at least one option"
-        );
-        if (selectCharacterType) {
-          generatePassword();
-        }
-      } else if (
-        includeNumbers &&
-        includeSpecialChar &&
-        includeUpperCaseAbc &&
-        includeLowerCaseAbc
-      ) {
-        options = numbers.concat(lowerCaseAbc, upperCaseAbc, specialChar);
-      } else if (
-        includeNumbers &&
-        includeSpecialChar &&
-        includeLowerCaseAbc &&
-        !includeUpperCaseAbc
-      ) {
-        options = numbers.concat(specialChar, lowerCaseAbc);
-      } else if (
-        includeNumbers &&
-        includeSpecialChar &&
-        !includeLowerCaseAbc &&
-        includeUpperCaseAbc
-      ) {
-        options = numbers.concat(specialChar, upperCaseAbc);
-      } else if (
-        includeNumbers &&
-        !includeSpecialChar &&
-        includeLowerCaseAbc &&
-        includeUpperCaseAbc
-      ) {
-        options = numbers.concate(upperCaseAbc, lowerCaseAbc);
-      } else if (
-        !includeNumbers &&
-        includeSpecialChar &&
-        includerLowerCase &&
-        includeUpperCaseAbc
-      ) {
-        options = specialChar.concat(lowerCaseAbc, upperCaseAbc);
-      } else if (
-        includeNumbers &&
-        includeSpecialChar &&
-        !includeLowerCaseAbc &&
-        !includeUpperCaseAbc
-      ) {
-        options = numbers.concat(specialChar);
-      } else if (
-        includeNumbers &&
-        !includeSpecialChar &&
-        !includeLowerCaseAbc &&
-        !includeUpperCaseAbc
-      ) {
-        options = numbers.concat(upperCaseAbc);
-      } else if (
-        !includeNumbers &&
-        includeSpecialChar &&
-        includeLowerCaseAbc &&
-        !includeUpperCaseAbc
-      ) {
-        options = specialChar.concat(upperCaseAbc);
-      } else if (
-        !includeNumbers &&
-        !includeSpecialChar &&
-        includeLowerCaseAbc &&
-        includeUpperCaseAbc
-      ) {
-        options = lowerCaseAbc.concat(upperCaseAbc);
-      } else if (
-        !includeNumbers &&
-        includeSpecialChar &&
-        !includeLowerCaseAbc &&
-        includeUpperCaseAbc
-      ) {
-        options = specialChar.concat(upperCaseAbc);
-      } else if (
-        includeNumbers &&
-        !includeSpecialChar &&
-        includeLowerCaseAbc &&
-        !includeUpperCaseAbc
-      ) {
-        options = number.concat(lowerCaseAbc);
-      } else if (includeNumbers) {
-        options = numbers;
-      } else if (includeSpecialChar) {
-        options = specialChar;
-      } else if (includeLowerCaseAbc) {
-        options = lowerCaseAbc;
-      } else if (includeUpperCaseAbc) {
-        options = upperCaseAbc;
+  }
+
+  // define options variable for each user choice
+  var options = [];
+  {
+    if (
+      !includeNumbers &&
+      !includeLowerCaseAbc &&
+      !includeUpperCaseAbc &&
+      !includeSpecialChar
+    ) {
+      var selectCharacterType = confirm("You must select at least one option");
+      if (selectCharacterType) {
+        generatePassword();
       }
+    } else if (
+      includeNumbers &&
+      includeSpecialChar &&
+      includeUpperCaseAbc &&
+      includeLowerCaseAbc
+    ) {
+      options = numbers.concat(lowerCaseAbc, upperCaseAbc, specialChar);
+    } else if (
+      includeNumbers &&
+      includeSpecialChar &&
+      includeLowerCaseAbc &&
+      !includeUpperCaseAbc
+    ) {
+      options = numbers.concat(specialChar, lowerCaseAbc);
+    } else if (
+      includeNumbers &&
+      includeSpecialChar &&
+      !includeLowerCaseAbc &&
+      includeUpperCaseAbc
+    ) {
+      options = numbers.concat(specialChar, upperCaseAbc);
+    } else if (
+      includeNumbers &&
+      !includeSpecialChar &&
+      includeLowerCaseAbc &&
+      includeUpperCaseAbc
+    ) {
+      options = numbers.concate(upperCaseAbc, lowerCaseAbc);
+    } else if (
+      !includeNumbers &&
+      includeSpecialChar &&
+      includeLowerCaseAbc &&
+      includeUpperCaseAbc
+    ) {
+      options = specialChar.concat(lowerCaseAbc, upperCaseAbc);
+    } else if (
+      includeNumbers &&
+      includeSpecialChar &&
+      !includeLowerCaseAbc &&
+      !includeUpperCaseAbc
+    ) {
+      options = numbers.concat(specialChar);
+    } else if (
+      includeNumbers &&
+      !includeSpecialChar &&
+      !includeLowerCaseAbc &&
+      !includeUpperCaseAbc
+    ) {
+      options = numbers.concat(upperCaseAbc);
+    } else if (
+      !includeNumbers &&
+      includeSpecialChar &&
+      includeLowerCaseAbc &&
+      !includeUpperCaseAbc
+    ) {
+      options = specialChar.concat(upperCaseAbc);
+    } else if (
+      !includeNumbers &&
+      !includeSpecialChar &&
+      includeLowerCaseAbc &&
+      includeUpperCaseAbc
+    ) {
+      options = lowerCaseAbc.concat(upperCaseAbc);
+    } else if (
+      !includeNumbers &&
+      includeSpecialChar &&
+      !includeLowerCaseAbc &&
+      includeUpperCaseAbc
+    ) {
+      options = specialChar.concat(upperCaseAbc);
+    } else if (
+      includeNumbers &&
+      !includeSpecialChar &&
+      includeLowerCaseAbc &&
+      !includeUpperCaseAbc
+    ) {
+      options = number.concat(lowerCaseAbc);
+    } else if (includeNumbers) {
+      options = numbers;
+    } else if (includeSpecialChar) {
+      options = specialChar;
+    } else if (includeLowerCaseAbc) {
+      options = lowerCaseAbc;
+    } else if (includeUpperCaseAbc) {
+      options = upperCaseAbc;
     }
   }
 
   var newPassword;
 
-  var password = "";
+  var password = [];
+
+  console.log(options);
 
   for (var i = 0; i < passwordLength; i++) {
-    var password = options[Math.floor(Math.random() * options.length)];
-    console.log(password);
-    return password;
+    var newPassword = options[Math.floor(Math.random() * options.length)];
+    password.push(newPassword);
   }
+  return password;
 }
 
 function writePassword() {
