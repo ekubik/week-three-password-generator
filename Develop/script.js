@@ -62,6 +62,8 @@ var includeNumbers;
 var includeLowerCaseAbc;
 var includeUpperCaseAbc;
 var includeSpecialChar;
+var selectCharacterType;
+var options;
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -81,8 +83,10 @@ function generatePassword() {
     "Please enter desired password length. This should be between 8 and 128 characters"
   );
   if (passwordLength < 7 || passwordLength > 128) {
-    alert("Please enter a valid password length");
-    prompt("Enter a password length between 8 and 128 characters");
+    var tryAgain = confirm("Please enter a valid password length");
+    if (tryAgain === true) {
+      generatePassword();
+    }
   } else {
     var includeNumbers = confirm(
       "Would you like to include numerical characters?"
@@ -90,5 +94,109 @@ function generatePassword() {
     var includeLowerCaseAbc = confirm(
       "Would you like to include lower case letters?"
     );
+    var includeUpperCaseAbc = confirm(
+      "Would you like to include uppercase letters?"
+    );
+    var includeSpecialChar = confirm(
+      "Would you like to include special characters (such as ! % & etc.) ? "
+    );
   }
+}
+
+// defining var options depending on password character options selected by the user
+if (
+  !includeNumbers &&
+  !includeLowerCaseAbc &&
+  !includeUpperCaseAbc &&
+  !includeSpecialChar
+) {
+  var selectCharacterType = confirm("You must select at least one option");
+  if (selectCharacterType) {
+    generatePassword();
+  }
+} else if (
+  includeNumbers &&
+  includeSpecialChar &&
+  includeUpperCaseAbc &&
+  includeLowerCaseAbc
+) {
+  options = numbers.concat(lowerCaseAbc, upperCaseAbc, specialChar);
+} else if (
+  includeNumbers &&
+  includeSpecialChar &&
+  includeLowerCaseAbc &&
+  !includeUpperCaseAbc
+) {
+  options = numbers.concat(specialChar, lowerCaseAbc);
+} else if (
+  includeNumbers &&
+  includeSpecialChar &&
+  !includeLowerCaseAbc &&
+  includeUpperCaseAbc
+) {
+  options = numbers.concat(specialChar, upperCaseAbc);
+} else if (
+  includeNumbers &&
+  !includeSpecialChar &&
+  includeLowerCaseAbc &&
+  includeUpperCaseAbc
+) {
+  options = numbers.concate(upperCaseAbc, lowerCaseAbc);
+} else if (
+  !includeNumbers &&
+  includeSpecialChar &&
+  includerLowerCase &&
+  includeUpperCaseAbc
+) {
+  options = specialChar.concat(lowerCaseAbc, upperCaseAbc);
+} else if (
+  includeNumbers &&
+  includeSpecialChar &&
+  !includeLowerCaseAbc &&
+  !includeUpperCaseAbc
+) {
+  options = numbers.concat(specialChar);
+} else if (
+  includeNumbers &&
+  !includeSpecialChar &&
+  !includeLowerCaseAbc &&
+  !includeUpperCaseAbc
+) {
+  options = numbers.concat(upperCaseAbc);
+} else if (
+  !includeNumbers &&
+  includeSpecialChar &&
+  includeLowerCaseAbc &&
+  !includeUpperCaseAbc
+) {
+  options = specialChar.concat(upperCaseAbc);
+} else if (
+  !includeNumbers &&
+  !includeSpecialChar &&
+  includeLowerCaseAbc &&
+  includeUpperCaseAbc
+) {
+  options = lowerCaseAbc.concat(upperCaseAbc);
+} else if (
+  !includeNumbers &&
+  includeSpecialChar &&
+  !includeLowerCaseAbc &&
+  includeUpperCaseAbc
+) {
+  options = specialChar.concat(upperCaseAbc);
+} else if (
+  includeNumbers &&
+  !includeSpecialChar &&
+  includeLowerCaseAbc &&
+  !includeUpperCaseAbc
+) {
+  options = number.concat(lowerCaseAbc);
+} else if (includeNumbers) {
+  options = numbers;
+} else if (includeSpecialChar) {
+  options = specialChar;
+} else if (includeLowerCaseAbc) {
+  options = lowerCaseAbc;
+} else if (includeUpperCaseAbc) {
+  options = upperCaseAbc;
 }
