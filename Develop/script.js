@@ -68,30 +68,26 @@ var options = [];
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-/*// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = newPassword;
-}*/
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 var passwordLength;
 
 function generatePassword() {
+  //user inputs password length
   var passwordLength = prompt(
     "Please enter desired password length. This should be between 8 and 128 characters"
   );
-  if (passwordLength < 7 || passwordLength > 128) {
+  //if password length not between 8 and 128 characters, user directed to try again. if cancel (try Again === false), alert closed
+  if (passwordLength < 8 || passwordLength > 128) {
     var tryAgain = confirm("Please enter a valid password length");
-    if (tryAgain === true) {
+    if (tryAgain) {
       generatePassword();
     }
+    //user selects types of characters that password should include
   } else {
     var includeNumbers = confirm(
-      "Would you like to include numerical characters?"
+      "Would you like to include numerical characters? (click OK for yes, CANCEL for no)"
     );
     var includeLowerCaseAbc = confirm(
       "Would you like to include lower case letters?"
@@ -102,11 +98,10 @@ function generatePassword() {
     var includeSpecialChar = confirm(
       "Would you like to include special characters (such as ! % & etc.) ? "
     );
-  }
 
-  // define options variable for each user choice
-  var options = [];
-  {
+    // define options variable for each user choice
+    var options = [];
+    //if no options selected
     if (
       !includeNumbers &&
       !includeLowerCaseAbc &&
@@ -117,6 +112,7 @@ function generatePassword() {
       if (selectCharacterType) {
         generatePassword();
       }
+      //different options that can be selected by user. options variable made up of relevant combination of arrays
     } else if (
       includeNumbers &&
       includeSpecialChar &&
@@ -205,19 +201,20 @@ function generatePassword() {
     }
   }
 
-  var newPassword;
-
   var password = [];
-
+  // possible characters printed to console
   console.log(options);
 
+  //generate random characters depending on user choice. loop code and push new character into array depending on selected password length
   for (var i = 0; i < passwordLength; i++) {
     var newPassword = options[Math.floor(Math.random() * options.length)];
     password.push(newPassword);
   }
-  return password;
+  //join array items into string
+  return password.join("");
 }
 
+//Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
