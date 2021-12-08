@@ -1,7 +1,7 @@
 //declare variables
 var passwordLength;
 var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var lowerCaseAbc = [
+var upperCaseAbc = [
   "A",
   "B",
   "C",
@@ -29,7 +29,7 @@ var lowerCaseAbc = [
   "Y",
   "Z",
 ];
-var upperCaseAbc = [
+var lowerCaseAbc = [
   "a",
   "b",
   "c",
@@ -159,7 +159,7 @@ function generatePassword() {
       includeNumbers &&
       !includeSpecialChar &&
       !includeLowerCaseAbc &&
-      !includeUpperCaseAbc
+      includeUpperCaseAbc
     ) {
       options = numbers.concat(upperCaseAbc);
     } else if (
@@ -168,7 +168,7 @@ function generatePassword() {
       includeLowerCaseAbc &&
       !includeUpperCaseAbc
     ) {
-      options = specialChar.concat(upperCaseAbc);
+      options = specialChar.concat(lowerCaseAbc);
     } else if (
       !includeNumbers &&
       !includeSpecialChar &&
@@ -189,7 +189,7 @@ function generatePassword() {
       includeLowerCaseAbc &&
       !includeUpperCaseAbc
     ) {
-      options = number.concat(lowerCaseAbc);
+      options = numbers.concat(lowerCaseAbc);
     } else if (includeNumbers) {
       options = numbers;
     } else if (includeSpecialChar) {
