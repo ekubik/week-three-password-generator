@@ -1,4 +1,4 @@
-# week-three-password-generator
+# Password Generator
 
 This project is a password generator which generates a random password based on the number of characters
 indicated by the user, and the parameters chosen by the user.
@@ -10,4 +10,10 @@ The password generator:
 <li> starts once the user clicks the 'Generate' button </li>
 <li> produces a random password of between 8 and 128 characters, depending on user choice. If an invalid length is chosen, user is redirected to enter a different value. </li>
 <li> allows the user to choose whether to include numbers, symbols, uppercase and lowercase letters. The user may choose to include one, two, three, or all the character types. If the user does not select any character types, they are redirected to the beginning of the password generation process.</li>
-<li> once all prompts are answered, and validated, the random password is displayed withing the text area. </li>
+<li> once all prompts are answered, and validated, the random password is displayed within the text area. </li>
+<br/>
+The application can be found here: <a href= "https://ekubik.github.io/week-three-password-generator/">  https://ekubik.github.io/week-three-password-generator/ </a>
+
+<br/>
+It appears as follows: <img src= "./Develop/passwordgenerator.png"/>
+<img src="./Develop/withpassword.png" />
